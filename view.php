@@ -35,10 +35,12 @@ if ($id) {
     $cm         = get_coursemodule_from_id('unedtrivial', $id, 0, false, MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
     $newmodule  = $DB->get_record('unedtrivial', array('id' => $cm->instance), '*', MUST_EXIST);
+    $context = context_module::instance($cm->id);
 } else if ($n) {
     $newmodule  = $DB->get_record('unedtrivial', array('id' => $n), '*', MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $newmodule->course), '*', MUST_EXIST);
     $cm         = get_coursemodule_from_instance('unedtrivial', $newmodule->id, $course->id, false, MUST_EXIST);
+    $context = context_module::instance($cm->id);
 } else {
     error('You must specify a course_module ID or an instance ID');
 }
@@ -70,7 +72,8 @@ $PAGE->set_heading(format_string($course->fullname));
 echo $OUTPUT->header();
 
 // PAGE
-if (user_has_role_assignment($USER->id, 5)) {     
+//if (user_has_role_assignment($USER->id, 5)) {     
+if (!has_capability('mod/unedtrivial:addinstance', $context)){
     //Check if user is a participant
     $query1 = $DB->get_record_sql('SELECT u.mail'
         . '                          FROM {unedtrivial_mails} u'
@@ -160,8 +163,8 @@ if (user_has_role_assignment($USER->id, 5)) {
         echo $OUTPUT->render($bDelete);
     }
     
-}else if (user_has_role_assignment($USER->id, 1) || user_has_role_assignment($USER->id, 2)
-          || user_has_role_assignment($USER->id, 3) || is_siteadmin()){
+//}else if (user_has_role_assignment($USER->id, 1) || user_has_role_assignment($USER->id, 2) || user_has_role_assignment($USER->id, 3) || is_siteadmin()){
+}else{
     echo $OUTPUT->heading(get_string('teachermenu','unedtrivial') . $newmodule->name,2,null);
     echo $OUTPUT->single_button(new moodle_url('teacheroptions.php', array('id' => $id, 'option' => '1')),
             get_string('teacheroption1', 'unedtrivial'), 'get');
