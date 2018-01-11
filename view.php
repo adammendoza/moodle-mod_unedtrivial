@@ -72,7 +72,6 @@ $PAGE->set_heading(format_string($course->fullname));
 echo $OUTPUT->header();
 
 // PAGE
-//if (user_has_role_assignment($USER->id, 5)) {     
 if (!has_capability('mod/unedtrivial:addinstance', $context)){
     //Check if user is a participant
     $query1 = $DB->get_record_sql('SELECT u.mail'
@@ -162,8 +161,6 @@ if (!has_capability('mod/unedtrivial:addinstance', $context)){
         $bDelete->add_action(new confirm_action(get_string('sure2', 'unedtrivial'), null,get_string('ok', 'unedtrivial')));
         echo $OUTPUT->render($bDelete);
     }
-    
-//}else if (user_has_role_assignment($USER->id, 1) || user_has_role_assignment($USER->id, 2) || user_has_role_assignment($USER->id, 3) || is_siteadmin()){
 }else{
     echo $OUTPUT->heading(get_string('teachermenu','unedtrivial') . $newmodule->name,2,null);
     echo $OUTPUT->single_button(new moodle_url('teacheroptions.php', array('id' => $id, 'option' => '1')),

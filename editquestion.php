@@ -40,10 +40,12 @@ if ($id) {
     $cm         = get_coursemodule_from_id('unedtrivial', $id, 0, false, MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
     $newmodule  = $DB->get_record('unedtrivial', array('id' => $cm->instance), '*', MUST_EXIST);
+    $context = context_module::instance($cm->id);
 } else if ($n) {
     $newmodule  = $DB->get_record('unedtrivial', array('id' => $n), '*', MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $newmodule->course), '*', MUST_EXIST);
     $cm         = get_coursemodule_from_instance('unedtrivial', $newmodule->id, $course->id, false, MUST_EXIST);
+    $context = context_module::instance($cm->id);
 } else {
     error('You must specify a course_module ID or an instance ID');
 }
@@ -65,7 +67,7 @@ $PAGE->set_title(format_string($newmodule->name));
 $PAGE->set_heading(format_string($course->fullname));
 
 //Students can't stay here
-if (user_has_role_assignment($USER->id, 5)) {
+if (!has_capability('mod/unedtrivial:addinstance', $context)) {
     echo $OUTPUT->header();
     echo get_string('roleerror', 'unedtrivial');
     echo $OUTPUT->footer();
