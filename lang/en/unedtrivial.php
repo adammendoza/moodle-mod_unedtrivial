@@ -256,9 +256,6 @@ $string['settingspar6'] = 'From address';
 $string['settingsexpl6'] = 'SMTP from address';
 $string['settingspar7'] = 'From name';
 $string['settingsexpl7'] = 'SMTP from name';
-$string['congratulations1'] = "The teaching team responsible of Trivial congratulates you " .
-        "for having achieved the withdrawal of all the questions";
-$string['congratulations2'] = "We hope you have had a satisfying experience and " .
-        "have helped you to review and consolidate knowledge. ".
-        "If so, we hope you to repeat the experience by participating in new Trivials.";
+$string['congratulations1'] = "The teaching team responsible of Trivial congratulates you for having achieved the withdrawal of all the questions";
+$string['congratulations2'] = "We hope you have had a satisfying experience and have helped you to review and consolidate knowledge. If so, we hope you to repeat the experience by participating in new Trivials.";
 $string['congratulations3'] = "Best Regards.";
