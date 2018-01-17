@@ -256,9 +256,6 @@ $string['settingspar6'] = 'Dirección de remitente';
 $string['settingsexpl6'] = 'Dirección de remitente en correo SMTP';
 $string['settingspar7'] = 'Nombre del remitente';
 $string['settingsexpl7'] = 'Nombre del remitente en correo SMTP';
-$string['congratulations1'] = "El equipo docente responsable del Trivial te felicita por haber conseguido ".
-        "la retirada de todas las preguntas";
-$string['congratulations2'] = "Esperamos que te haya resultado una experiencia satisfactoria " .
-        "y que te haya ayudado a repasar y consolidar los conocimientos. " .
-        "Si ha sido así esperamos que repitas la experiencia participando en nuevos Trivials.";
+$string['congratulations1'] = "El equipo docente responsable del Trivial te felicita por haber conseguido la retirada de todas las preguntas";
+$string['congratulations2'] = "Esperamos que te haya resultado una experiencia satisfactoria y que te haya ayudado a repasar y consolidar los conocimientos. Si ha sido así esperamos que repitas la experiencia participando en nuevos Trivials.";
 $string['congratulations3'] = "Saludos cordiales.";
